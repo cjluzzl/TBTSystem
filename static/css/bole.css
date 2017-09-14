@@ -1,0 +1,195 @@
+#wrapper {
+    background: #fff;
+    padding: 20px 10px 20px 10px;
+}
+.container {
+    display: block;
+    width: 960px;
+    margin: 0 auto;
+}
+
+#breadcrumb {
+    display: block;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-family: "Microsoft YaHei", 'Myriad Pro','Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.margin-20 {
+    margin-bottom: 20px;
+}
+.grid-12 {
+    width: 940px;
+    display: block;
+    margin: 0 10px;
+    margin-bottom: 0px;
+    float: left;
+
+}
+
+.grid-8 {
+    width: 620px;
+    display: block;
+    margin: 0 10px;
+    float: left;
+
+}
+.floated-thumb {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.post {
+    padding-bottom: 20px;
+}
+
+.floated-thumb .post-thumb {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #e8e8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.post-meta .archive-title {
+    color: #333;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    font-family: "Microsoft YaHei",'Myriad Pro','Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+.post-meta {
+    font-size: 12px;
+    color: #999;
+}
+
+.align-right {
+    text-align: right;
+}
+.read-more {
+    line-height: 20px;
+    font-size: 13px;
+    color: #fffffe;
+    font-weight: 700;
+    text-align: right;
+}
+.post-meta a {
+    color: #999;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.tabs {
+    margin: 0 0 20px 0;
+    display: block;
+}
+.tabs ul.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tabbed_widget .nav {
+    font-family: "Microsoft YaHei", 'Myriad Pro','Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.tabbed_widget ul {
+    margin: 0;
+}
+.clearfix {
+    zoom: 1;
+}
+.tabs ul.nav li.active {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+        border-bottom-color: rgb(232, 232, 232);
+    border-bottom-color: #fff !important;
+}
+.tabs ul.nav li {
+    float: left;
+    position: relative;
+    margin: 0;
+    z-index: 10;
+    padding: 0;
+    margin: 0 0 -1px 0;
+    border: 1px solid transparent;
+    border-bottom-color: #e8e8e8;
+}
+.tabbed_widget li {
+    list-style: none;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    width: auto;
+}
+.grid-4 {
+    width: 300px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+.tabs .floated-thumb .post-meta.no-thumb {
+    margin-bottom: 0;
+}
+.floated-thumb .post-meta.no-thumb {
+    margin-bottom: 20px;
+}
+
+
+
+.numb {
+    float: left;
+    color: #22bcdd;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px 10px 0px 0px;
+}
+
+.post-meta .meta-title {
+    color: #333;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+    font-family: "Microsoft YaHei",'Myriad Pro','Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.entry-meta a, .post-meta a {
+    color: #999;
+}
+
+
+.tabs .tab {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    padding: 20px 12px 20px 12px;
+}
+
+.tabbed_widget #tab1 a, .tabbed_widget #tab2 a {
+    font-size: 13px;
+    text-transform: none;
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+}
+
+
+
+

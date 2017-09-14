@@ -1,0 +1,65 @@
+/*这里是logo以及搜索框的样式*/
+/*head*/
+#header {
+    width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    /*overflow: hidden;*/
+    height: 100px;
+}
+
+/* .head{width: 100%;padding-top:15px;background: url("../img/head-linebg.jpg") repeat-x;height: 74px;} */
+.head {
+    padding-top: 2px;
+    background: url("../images/head-linebg.jpg") repeat-x;
+    height: 87px;
+}
+
+.head_logo {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.head_logo h1 {
+    float: left;
+    text-indent: -9999px;
+    background: url("../images/logo.png");
+    width: 220px;
+    height: 78px;
+    position: relative
+}
+
+/* .head_logo h1{float: left;text-indent: -9999px;background: url("../img/logo.jpg");width: 235px;height: 68px;position:relative} */
+
+select {
+    margin-top: 15px;
+    height: 26px;
+    margin-right: 10px;
+    width: 100px;
+}
+
+#row {
+    position: absolute;
+    width: 1000px;
+    left: 600px;
+    top: 20px;
+}
+#menu{
+    background-color: #ccc;
+    opacity: 1;
+    /*z-index: 999;*/
+}
+#search{
+    width: 300px;
+    height: 30px;
+    outline:none;
+    padding-left: 10px;
+}
+#btn{
+    width: 40px;
+    height: 34px;
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    /*border: none;*/
+}

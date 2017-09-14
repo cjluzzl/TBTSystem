@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--****************************************
+     *   导入css包, hd.css为头部(logo以及搜索框)样式**
+     *   nav.css为下面导航栏的样式                 **
+     *                                         **
+    ***************************************-->
+    <link rel="stylesheet" href="{% static 'css/hd.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bole.css' %}"/>
+    <!--导入jquery和bootstarp -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        /* CSS Document */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        em, i {
+            font-style: normal;
+        }
+
+        img {
+            border: 0 none;
+            vertical-align: top;
+        }
+
+        ul, ol, dl, li {
+            list-style: none;
+        }
+
+        a {
+            color: #2d2d2d;
+            text-decoration: none;
+            outline: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a:focus {
+            outline: none;
+            -moz-outline: none
+        }
+
+        a {
+            blr: expression(this.onFocus=this.blur());
+        }
+
+        .claer:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        body {
+
+            overflow-x: hidden;
+            font-family: "微软雅黑";
+            font-size: 12px;
+            background: #fff;
+        }
+        .header {
+            width: 100%;
+            height: 38px;
+            background: #fff;
+        }
+        .header .top {
+            height: 38px;
+            line-height: 38px;
+            background: #3a3a3a;
+            color: #fff;
+            width: 100%;
+        }
+        .header .top .personal {
+            height: auto;
+            float: right;
+            position: relative;
+        }
+        .header .top .user {
+            height: 30px;
+            line-height: 30px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+        dl{
+            margin: 0;
+            margin-top: 0px;
+            padding: 0;
+        }
+        .fr {
+            float: right !important;
+        }
+        .header .top .user dd {
+            float: right;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .header .top .userdetail {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 38px;
+            background: #fff;
+            padding: 10px;
+            z-index: 99;
+            border: 1px solid #ccc;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(204, 204, 204);
+            border-top: 0;
+        }
+        .header .top .userdetail .btn a.fl {
+            width: 65%;
+        }
+        .header .top .userdetail .btn a {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #717171;
+            color: #fff;
+        }
+        .fl {
+            float: left !important;
+        }
+        .fr {
+            float: right !important;
+        }
+        fieldset, abbr, img, a img, :link img, :visited img {
+            border: 0px;
+        }
+        .header .top .user dt {
+            margin-right: 20px;
+            width: 20px;
+            height: 20px;
+            margin-top: 5px;
+            background: #fff;
+            overflow: hidden;
+            border-radius: 50%;
+            float: right;
+
+        }
+        .header .top .userdetail {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 38px;
+            background: #fff;
+            padding: 10px;
+            z-index: 99;
+            border: 1px solid #ccc;
+                border-top-width: 1px;
+                border-top-style: solid;
+                border-top-color: rgb(204, 204, 204);
+            border-top: 0;
+
+        }
+        .header .top .userdetail .btn {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 20px;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+<section>
+    <div class="header">
+     {% if request.user.is_authenticated %}
+                <div class="top">
+				    <div class="wp">
+					<div class="fl"><p>服务电话：<b>15068895421</b></p></div>
+					<!--登录后跳转-->
+
+                    <div class="personal">
+                            <dl class="user fr">
+                                <dd>{{ user.username }}<img class="down fr" src="/static/images/top_down.png"/></dd>
+                                <dt><img width="20" height="20" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
+                            </dl>
+                            <div class="userdetail">
+                            	<dl>
+                                    <dt><img width="80" height="80" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
+	                                <dd>
+	                                    <h2>{{ user.nick_name }}</h2>
+	                                    <p>{{ user.username }}</p>
+	                                </dd>
+                                </dl>
+                                <div class="btn">
+	                                <a class="personcenter fl" href="#">进入个人中心</a>
+	                                <a class="fr" href="#">退出</a>
+                                </div>
+                            </div>
+                        </div>
+				</div>
+			    </div>
+            {% else %}
+                 <div class="top">
+				<div class="wp">
+					<div class="fl"><p>服务电话：<b>15068895421</b></p></div>
+					<!--登录后跳转-->
+                        <a style="color:white" class="fr registerbtn" href="#">注册</a>
+                        <a style="color:white" class="fr loginbtn" href="#">登录</a>
+				</div>
+			</div>
+            {% endif %}
+    </div>
+</section>
+<!--logo以及收缩框-->
+<div id="header">
+
+    <!--这里的中国计量大学logo-->
+    <div class="head" id="head">
+        <div class="head_logo">
+            <h1><a href="{% url 'index' %}">中国计量大学</a></h1>
+        </div>
+    </div>
+
+
+    <!--这里是用了bootstrap的搜索框-->
+    <div class="row" id="row">
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜全站" id="search">
+{#                <span class="input-group-btn">#}
+                    <button class="btn btn-default" type="button" id="btn">搜索</button>
+{#                </span>#}
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+
+
+</div>
+
+
+<!--nav-->
+<div class="naver">
+    <div class="nav">
+        <ul class="claer">
+            <li><a href="{% url 'index' %}">首页</a></li>
+
+            <!--新闻-->
+            <li>
+
+                <a href="javascript:void(0);">新闻</a>
+
+
+                <dl class="drop-down">
+                    <dt></dt>
+
+                    <dd>
+                        <a href="http://www.cjlu.edu.cn/do.jsp?dotype=viewnews&id=10436&xww=1" target="_blank"
+                           class="down-over">国内新闻</a>
+                    </dd>
+                    <dd>
+                        <a href="http://www.cjlu.edu.cn/upload/file/1491464861395.pdf" target="_blank"
+                           class="down-over">国外新闻</a>
+                    </dd>
+                </dl>
+
+
+            </li>
+
+            <!--标准查询-->
+            <li>
+                <a href="javascript:void(0);">标准查询</a>
+                <dl class="drop-down">
+                    <dt></dt>
+
+                    <dd>
+                        <a href="http://jwc.cjlu.edu.cn/" target="_blank" class="down-over">地方标准</a>
+                    </dd>
+                    <dd>
+                        <a href="http://yjsb.cjlu.edu.cn/" target="_blank" class="down-over">行业标准</a>
+                    </dd>
+                    <dd>
+                        <a href="http://jwc.cjlu.edu.cn/default.aspx" target="_blank" class="down-over">国家标准</a>
+                    </dd>
+                    <dd>
+                        <a href="http://cjxy.cjlu.edu.cn/cjxy/index.php" target="_blank" class="down-over">团体标准</a>
+                    </dd>
+                </dl>
+
+
+            </li>
+
+            <!--通报与召回-->
+            <li>
+                <a href="javascript:void(0);">通报与召回</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://zs.cjlu.edu.cn/" target="_blank" class="down-over">通报TBT/SPS</a>
+                    </dd>
+                    <dd>
+                        <a href="http://yjsb.cjlu.edu.cn/" target="_blank" class="down-over">召回与扣留信息</a>
+                    </dd>
+                    <dd>
+                        <a href="http://jyb.cjlu.edu.cn/" target="_blank" class="down-over">通报评议</a>
+                    </dd>
+                    <dd>
+                        <a href="http://cjxy.cjlu.edu.cn/" target="_blank" class="down-over">通报报告</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--研究动态-->
+            <li>
+                <a href="javascript:void(0);">研究动态</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://kjc.cjlu.edu.cn/" target="_blank" class="down-over">各省标准化试点项目</a>
+                    </dd>
+                    <dd>
+                        <a href="http://kjc.cjlu.edu.cn/" target="_blank" class="down-over">标准立项信息</a>
+                    </dd>
+                    <dd>
+                        <a href="http://kjc.cjlu.edu.cn/" target="_blank" class="down-over">科研成果</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--国际交流与合作-->
+            <li>
+                <a href="javascript:void(0);">国际交流与合作</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://fgc.cjlu.edu.cn/redir.php?catalog_id=477" target="_blank"
+                           class="down-over">国际合作标准化项目</a>
+                    </dd>
+                    <dd>
+                        <a href="http://mse.cjlu.edu.cn/" target="_blank" class="down-over">国际合作标准</a>
+                    </dd>
+                    <dd>
+                        <a href="http://qiti.cjlu.edu.cn/" target="_blank" class="down-over">“一带一路”</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--立项标准工作动态-->
+            <li>
+                <a href="javascript:void(0);">立项标准工作动态</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://rsc.cjlu.edu.cn" target="_blank" class="down-over">标准制定过程跟踪</a>
+                    </dd>
+                    <dd>
+                        <a href="http://www.cjlu.edu.cn/do.jsp?dotype=viewnews&id=13716&xww=1" target="_blank"
+                           class="down-over">标准实施情况</a>
+                    </dd>
+                    <dd>
+                        <a href="http://www.cjlu.edu.cn/do.jsp?dotype=viewnews&id=13716&xww=1" target="_blank"
+                           class="down-over">标准监督评价</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--标准化培训-->
+            <li>
+                <a href="javascript:void(0);">标准化培训</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://ino.cjlu.edu.cn/" target="_blank" class="down-over">标准基础知识</a>
+                    </dd>
+                    <dd>
+                        <a href="http://ino.cjlu.edu.cn/zwhzbx.asp" target="_blank" class="down-over">标准培训申请</a>
+                    </dd>
+                    <dd>
+                        <a href="http://ino.cjlu.edu.cn/zwhzbx.asp" target="_blank" class="down-over">标准书籍推荐</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--服务-->
+            <li>
+                <a href="javascript:void(0);">服务</a>
+                <dl class="drop-down">
+                    <dt></dt>
+                    <dd>
+                        <a href="http://gh.cjlu.edu.cn/" target="_blank" class="down-over">专家介绍</a>
+                    </dd>
+
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <div style="width: auto;height: 3px;background-color: #1b9dec"></div>
+</div>
+
+
+<div>
+    {% autoescape off %}
+        {{ article.content}}
+    {% endautoescape %}
+
+</div>
+
+
+
+
+</body>
+<script type="text/javascript" src="{% static 'js/selectUi.js' %}"></script>
+</html>

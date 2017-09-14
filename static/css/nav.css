@@ -1,0 +1,90 @@
+/*nav 这里是导航条的样式*/
+.naver {
+    width: 100%;
+    padding: 10px 0;
+    z-index: 9999;
+    position: relative;
+}
+
+.nav {
+    margin: 0 auto;
+    width: 1226px;
+    z-index: 9999;
+}
+
+.nav ul {
+    margin: 0 auto;
+    width: 1069px;
+    z-index: 9999;
+}
+
+.nav li:first-child {
+    border: none;
+}
+
+.nav li {
+    float: left;
+    line-height: 22px;
+    width: 106px;
+    border-left: 1px solid #4d4d4d;
+    text-align: center;
+    position: relative;
+    z-index: 999999;
+}
+
+.nav li a {
+    padding: 3px 11px;
+    font-size: 14px;
+}
+
+.nav li:hover a {
+    background: #2e325f;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.drop-down {
+    position: absolute;
+    top: 30px;
+    margin-left: -38px;
+    z-index: 9999999;
+    text-align: center;
+    background: #2e325f;
+    border-radius: 6px;
+    display: none;
+    left: 0
+}
+
+.drop-down a {
+    color: #fff;
+    line-height: 40px;
+    z-index: 999999;
+}
+
+.nav li:hover .drop-down {
+    display: block;
+}
+
+.drop-down dt {
+    width: 180px;
+    height: 8px;
+    background: url("../images/sj.png") no-repeat 73px 0;
+    position: absolute;
+    z-index: 999999;
+    top: -8px;
+    left: 20px;
+    margin-left: -6px;
+}
+
+.drop-down dd { /* border-bottom: 1px solid #fff; */
+    margin: 0 5px;
+    width: 180px;
+}
+
+.drop-down dd:last-child {
+    border-bottom: none;
+}
+
+.drop-down dd a:hover {
+    text-decoration: underline
+}
