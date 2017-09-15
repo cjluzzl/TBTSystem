@@ -9,9 +9,21 @@ from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UserInfoF
 from django.contrib.auth.hashers import make_password
 from utils.send_mail import send_register_email
 from django.http import HttpResponseRedirect
+from dwebsocket import require_websocket, accept_websocket
 # Create your views here.
-title = "中国计量大学理学院在线考试系统"
+title = "中国计量大学TBT系统"
 phoneNumber = "15068895421"
+
+
+@require_websocket
+def test(request):
+    try:
+        print "cs", request.is_websocket()
+        for message in request.websocket:
+            print "收到的消息是", message
+            request.websocket.send("我收到消息了"+message)
+    except:
+        print "错误"
 
 
 #调试完成

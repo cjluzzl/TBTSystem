@@ -51,9 +51,9 @@ class ArticleJsonView(View):
         for article in articles:
             dic = {}
             dic["title"] = article.article_title
-            dic["image"] = "http://192.168.23.1:8000/media/" + str(article.article_image)
+            dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.23.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
             dic["shortContent"] = article.shortContent
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
@@ -61,7 +61,7 @@ class ArticleJsonView(View):
             l.append(dic)
         json_data["data"] = l
         if (int(page_id)) * PERPAGER_ARTICLE_COUNT < count:
-            json_data["more"] = "http://192.168.23.1:8000/article/" + str(int(type_id)) + "/" + str(int(page_id) + 1) + "/"
+            json_data["more"] = "http://192.168.155.1:8000/article/" + str(int(type_id)) + "/" + str(int(page_id) + 1) + "/"
         else:
             json_data["more"] = ""
 
@@ -89,9 +89,9 @@ class HomeNewsJsonListView(View):
         for article in articles:
             dic = {}
             dic["title"] = article.article_title
-            dic["image"] = "http://192.168.23.1:8000/media/" + str(article.article_image)
+            dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.23.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
             dic["shortContent"] = article.shortContent
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
@@ -99,7 +99,7 @@ class HomeNewsJsonListView(View):
             l.append(dic)
         json_data["data"] = l
         if (int(page_id)) * PERPAGER_ARTICLE_COUNT < count:
-            json_data["more"] = "http://192.168.23.1:8000/article/home_news_list/" + str(int(page_id) + 1) + "/"
+            json_data["more"] = "http://192.168.155.1:8000/article/home_news_list/" + str(int(page_id) + 1) + "/"
         else:
             json_data["more"] = ""
 
@@ -126,9 +126,9 @@ class AbroadNewsJsonListView(View):
         for article in articles:
             dic = {}
             dic["title"] = article.article_title
-            dic["image"] = "http://192.168.23.1:8000/media/" + str(article.article_image)
+            dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.23.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
             dic["showCount"] = str(article.read_num)
@@ -136,7 +136,7 @@ class AbroadNewsJsonListView(View):
             l.append(dic)
         json_data["data"] = l
         if (int(page_id)) * PERPAGER_ARTICLE_COUNT < count:
-            json_data["more"] = "http://192.168.23.1:8000/article/abroad_news_list/" + str(int(page_id) + 1) + "/"
+            json_data["more"] = "http://192.168.155.1:8000/article/abroad_news_list/" + str(int(page_id) + 1) + "/"
         else:
             json_data["more"] = ""
 

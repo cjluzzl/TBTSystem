@@ -29,15 +29,15 @@ def welcome_student(instance, created, **kwargs):
         print instance
         print kwargs
 
-
-@receiver(request_started)
-def create_http(environ, **kwargs):
-    print "建立了http请求"
-    #print environ["HTTP_COOKIE"]
-    print environ["HTTP_USER_AGENT"]
-    print environ["REMOTE_ADDR"]
-
-
-@receiver(request_finished)
-def destory_http(**kwargs):
-    print "http请求结束"
+#
+# @receiver(request_started)
+# def create_http(environ, **kwargs):
+#     print "建立了http请求"
+#     #print environ["HTTP_COOKIE"]
+#     print environ["HTTP_USER_AGENT"]
+#     print environ["REMOTE_ADDR"]
+#
+#
+# @receiver(request_finished)
+# def destory_http(**kwargs):
+#     print "http请求结束"
