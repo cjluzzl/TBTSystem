@@ -31,6 +31,44 @@ class ArticleDetailView(View):
         return render(request, "article_detail.html", {"article": article})
 
 
+class ArticleJsonView(View):
+    def get(self, request, type_id, page_id):
+        json_data = {}
+        try:
+            int(page_id)
+
+        except:
+            json_data["retcode"] = "400"
+            json_data["meta"] = "非法页面参数"
+            return HttpResponse(json.dumps(json_data), content_type="application/json")
+        json_data["retcode"] = "200"
+        json_data["meta"] = "请求成功"
+        l = []
+        articles = Article.objects.filter(type=type_id)[::-1]
+        count = len(articles)
+        articles = articles[(int(page_id) - 1) * PERPAGER_ARTICLE_COUNT:int(page_id) * PERPAGER_ARTICLE_COUNT]
+
+        for article in articles:
+            dic = {}
+            dic["title"] = article.article_title
+            dic["image"] = "http://192.168.23.1:8000/media/" + str(article.article_image)
+            dic["type"] = article.type.type_name
+            dic["url"] = "http://192.168.23.1:8000/article/detail/" + str(article.pk)
+            dic["shortContent"] = article.shortContent
+            dic["trade"] = article.trade.trad_name
+            dic["pubTime"] = str(article.pub_time)
+            dic["showCount"] = str(article.read_num)
+            l.append(dic)
+        json_data["data"] = l
+        if (int(page_id)) * PERPAGER_ARTICLE_COUNT < count:
+            json_data["more"] = "http://192.168.23.1:8000/article/" + str(int(type_id)) + "/" + str(int(page_id) + 1) + "/"
+        else:
+            json_data["more"] = ""
+
+        return HttpResponse(json.dumps(json_data), content_type="application/json")
+
+
+
 class HomeNewsJsonListView(View):
     def get(self, request, page_id):
         json_data = {}
