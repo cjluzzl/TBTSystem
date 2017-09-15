@@ -16,11 +16,24 @@ phoneNumber = "15068895421"
 
 
 @require_websocket
-def test(request):
+def test(request,user_name):
     try:
         print "cs", request.is_websocket()
+        print "消息发送者是:", user_name
+        #读取消息数据库该用户的未读信息
+
+        #未读信息发送给用户
+
+        #request.websocket.send("json")
         for message in request.websocket:
             print "收到的消息是", message
+            #获取接收人  和消息内容
+
+            #内容写入数据库
+
+            #通过signal发送给指定的人
+
+
             request.websocket.send("我收到消息了"+message)
     except:
         print "错误"

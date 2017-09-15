@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name="user_active"),
     url(r'login/$', LoginView.as_view(), name="user_login"),
     url(r'logout/$', LogoutView.as_view(), name="user_logout"),
-    url(r'test/$', test)
+    url(r'test/(?P<user_name>.*)/$', test)
 ]
