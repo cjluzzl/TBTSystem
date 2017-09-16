@@ -14,12 +14,14 @@ from dwebsocket import require_websocket, accept_websocket
 title = "中国计量大学TBT系统"
 phoneNumber = "15068895421"
 
-
+dic = {}
 @require_websocket
 def test(request,user_name):
     try:
         print "cs", request.is_websocket()
         print "消息发送者是:", user_name
+        #放入聊天在线人数字典
+        dic[user_name] = request.websocket
         #读取消息数据库该用户的未读信息
 
         #未读信息发送给用户
