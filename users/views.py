@@ -16,7 +16,7 @@ phoneNumber = "15068895421"
 
 dic = {}
 @require_websocket
-def test(request,user_name):
+def test(request, user_name):
     try:
         print "cs", request.is_websocket()
         print "消息发送者是:", user_name

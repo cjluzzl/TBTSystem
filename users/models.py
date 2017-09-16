@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from datetime import datetime
+from django.utils import timezone
 # Create your models here.
 
 
@@ -84,4 +85,16 @@ class Banner(models.Model):
         verbose_name = u"轮播图"
         verbose_name_plural = verbose_name
 
+
+class Message(models.Model):
+    user_from = models.ForeignKey(UserProfile, verbose_name=u"发送人", related_name='from_user')
+    user_to = models.ForeignKey(UserProfile, verbose_name=u"接收人", related_name='to_user')
+    read_state = models.BooleanField(default=False, verbose_name="读取状态")
+    del_state = models.BooleanField(default=False, verbose_name=u"是否被删除")
+    send_time = models.DateTimeField(default=timezone.now, verbose_name=u"发送时间")
+    msg = models.CharField(max_length=1000, verbose_name=u"消息内容", help_text=u"不超过500字")
+
+    class Meta:
+        verbose_name = u"消息"
+        verbose_name_plural = verbose_name
 
