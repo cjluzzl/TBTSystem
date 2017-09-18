@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'pure_pagination',
     'users',
     'xadmin',
     'DjangoUeditor',
@@ -53,6 +54,17 @@ INSTALLED_APPS = [
     'tbtsps',
     'captcha'
 ]
+
+#配置分页插件
+PAGINATION_SETTINGS = {
+    #中间行数显示的数量
+    'PAGE_RANGE_DISPLAYED': 10,
+    #左右两端显示的数量
+    'MARGIN_PAGES_DISPLAYED': 2,
+    #when you want to just show first page when provided invalid page instead of 404 error
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

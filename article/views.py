@@ -6,9 +6,31 @@ from django.http import HttpResponse
 import json
 import random
 from .signal import pizza_done
+from django.shortcuts import render_to_response
+from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 PERPAGER_ARTICLE_COUNT = 5
+
+
+def index(request):
+
+    all_articles = Article.objects.all()
+    try:
+        page = request.GET.get('page', 1)
+    except PageNotAnInteger:
+        page = 1
+
+
+    # Provide Paginator with the request object for complete querystring generation
+
+    p = Paginator(all_articles, 10 , request=request)
+
+    articles = p.page(page)
+
+    return render_to_response('index.html', {
+        'all_articles': articles,
+    })
 
 
 class ArticleMobileDetailView(View):

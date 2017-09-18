@@ -21,6 +21,7 @@ from TBTSystem.settings import MEDIA_ROOT, STATIC_ROOT, STATIC_URL
 from django.views.static import serve
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
+from article.views import index
 import xadmin
 
 urlpatterns = [
@@ -32,6 +33,6 @@ urlpatterns = [
     url(r'^article/', include('article.urls'), name="article"),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_ROOT}),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
-    url(r'^index/$', TemplateView.as_view(template_name="index.html"), name="index"),
-
+    #url(r'^index/$', TemplateView.as_view(template_name="index.html"), name="index"),
+    url(r'^index/$', index, name="index"),
 ]

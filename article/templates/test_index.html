@@ -1,0 +1,40 @@
+{# index.html #}
+
+{% block content %}
+
+{% for article in all_articles.object_list %}
+    <div>
+        First name: {{ article.article_title }}
+    </div>
+{% endfor %}
+
+{# The following renders the pagination html #}
+<div id="pagination">
+    <ul class="pagelist">
+
+                        {% if all_articles.has_previous %}
+                            <li class="long"><a href="?{{ all_articles.previous_page_number.querystring }}">上一页</a></li>
+                        {% endif %}
+
+                        {% for page in all_articles.pages %}
+                            {% if page %}
+                                {% ifequal page all_articles.number %}
+                                    <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                                {% else %}
+                                    <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                                {% endifequal %}
+                            {% else %}
+                                <li class="none"><a href="">...</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if all_articles.has_next %}
+                            <li class="long"><a href="?{{ all_articles.next_page_number.querystring }}">下一页</a></li>
+                        {% endif %}
+
+
+
+
+                    </ul>
+</div>
+
+{% endblock %}

@@ -72,11 +72,13 @@
             font-size: 12px;
             background: #fff;
         }
+
         .header {
             width: 100%;
             height: 38px;
             background: #fff;
         }
+
         .header .top {
             height: 38px;
             line-height: 38px;
@@ -84,31 +86,37 @@
             color: #fff;
             width: 100%;
         }
+
         .header .top .personal {
             height: auto;
             float: right;
             position: relative;
         }
+
         .header .top .user {
             height: 30px;
             line-height: 30px;
             margin-top: 4px;
             cursor: pointer;
         }
-        dl{
+
+        dl {
             margin: 0;
             margin-top: 0px;
             padding: 0;
         }
+
         .fr {
             float: right !important;
         }
+
         .header .top .user dd {
             float: right;
             color: #fff;
             margin: 0;
             padding: 0;
         }
+
         .header .top .userdetail {
             display: none;
             position: absolute;
@@ -123,9 +131,11 @@
             border-top-color: rgb(204, 204, 204);
             border-top: 0;
         }
+
         .header .top .userdetail .btn a.fl {
             width: 65%;
         }
+
         .header .top .userdetail .btn a {
             display: block;
             height: 30px;
@@ -134,15 +144,19 @@
             background: #717171;
             color: #fff;
         }
+
         .fl {
             float: left !important;
         }
+
         .fr {
             float: right !important;
         }
+
         fieldset, abbr, img, a img, :link img, :visited img {
             border: 0px;
         }
+
         .header .top .user dt {
             margin-right: 20px;
             width: 20px;
@@ -154,6 +168,7 @@
             float: right;
 
         }
+
         .header .top .userdetail {
             display: none;
             position: absolute;
@@ -163,12 +178,13 @@
             padding: 10px;
             z-index: 99;
             border: 1px solid #ccc;
-                border-top-width: 1px;
-                border-top-style: solid;
-                border-top-color: rgb(204, 204, 204);
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(204, 204, 204);
             border-top: 0;
 
         }
+
         .header .top .userdetail .btn {
             width: 100%;
             height: 30px;
@@ -182,43 +198,43 @@
 <body>
 <section>
     <div class="header">
-     {% if request.user.is_authenticated %}
-                <div class="top">
-				    <div class="wp">
-					<div class="fl"><p>服务电话：<b>15068895421</b></p></div>
-					<!--登录后跳转-->
+        {% if request.user.is_authenticated %}
+            <div class="top">
+                <div class="wp">
+                    <div class="fl"><p>服务电话：<b>15068895421</b></p></div>
+                    <!--登录后跳转-->
 
                     <div class="personal">
-                            <dl class="user fr">
-                                <dd>{{ user.username }}<img class="down fr" src="/static/images/top_down.png"/></dd>
-                                <dt><img width="20" height="20" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
+                        <dl class="user fr">
+                            <dd>{{ user.username }}<img class="down fr" src="/static/images/top_down.png"/></dd>
+                            <dt><img width="20" height="20" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
+                        </dl>
+                        <div class="userdetail">
+                            <dl>
+                                <dt><img width="80" height="80" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
+                                <dd>
+                                    <h2>{{ user.nick_name }}</h2>
+                                    <p>{{ user.username }}</p>
+                                </dd>
                             </dl>
-                            <div class="userdetail">
-                            	<dl>
-                                    <dt><img width="80" height="80" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
-	                                <dd>
-	                                    <h2>{{ user.nick_name }}</h2>
-	                                    <p>{{ user.username }}</p>
-	                                </dd>
-                                </dl>
-                                <div class="btn">
-	                                <a class="personcenter fl" href="#">进入个人中心</a>
-	                                <a class="fr" href="#">退出</a>
-                                </div>
+                            <div class="btn">
+                                <a class="personcenter fl" href="#">进入个人中心</a>
+                                <a class="fr" href="#">退出</a>
                             </div>
                         </div>
-				</div>
-			    </div>
-            {% else %}
-                 <div class="top">
-				<div class="wp">
-					<div class="fl"><p>服务电话：<b>15068895421</b></p></div>
-					<!--登录后跳转-->
-                        <a style="color:white" class="fr registerbtn" href="#">注册</a>
-                        <a style="color:white" class="fr loginbtn" href="#">登录</a>
-				</div>
-			</div>
-            {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="top">
+                <div class="wp">
+                    <div class="fl"><p>服务电话：<b>15068895421</b></p></div>
+                    <!--登录后跳转-->
+                    <a style="color:white" class="fr registerbtn" href="#">注册</a>
+                    <a style="color:white" class="fr loginbtn" href="#">登录</a>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </section>
 <!--logo以及收缩框-->
@@ -238,9 +254,9 @@
         <div class="col-lg-6">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="搜全站" id="search">
-{#                <span class="input-group-btn">#}
-                    <button class="btn btn-default" type="button" id="btn">搜索</button>
-{#                </span>#}
+                {#                <span class="input-group-btn">#}
+                <button class="btn btn-default" type="button" id="btn">搜索</button>
+                {#                </span>#}
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
     </div>
@@ -411,70 +427,89 @@
 <div id="wrapper" class="container">
     <div id="breadcrumb" class="grid-12 margin-20">
         <div class="breadcrumb-wrapper"><!-- Breadcrumb NavXT 4.4.0 -->
-            <a title="Go to TBT早知道." href="http://www.jobbole.com" class="main-home">TBT早知道</a> &gt; <a href="http://blog.jobbole.com" class="home">首页</a> &gt; 所有文章</div>
+            <a title="Go to TBT早知道." href="http://www.jobbole.com" class="main-home">TBT早知道</a> &gt; <a
+                    href="http://blog.jobbole.com" class="home">首页</a> &gt; 所有文章
         </div>
-    <div class="grid-8">
-        <div class="post floated-thumb">
-
-
-		<!-- BEGIN .post-thumb -->
-		<div class="post-thumb">
-
-			<a target="_blank" href="http://blog.jobbole.com/112206/" title="决策树算法及实现"><img src="http://jbcdn2.b0.upaiyun.com/2017/08/d5e765a446f9f0cf17c21b596186d3b9.png" alt="" width="120" height="120"></a>
-
-		</div>
-		<!-- END .post-thumb -->
-		<!-- BEGIN .post-meta -->
-		<div class="post-meta">
-		    <p>
-                <a class="archive-title" target="_blank" href="http://blog.jobbole.com/112206/" title="决策树算法及实现">决策树算法及实现</a><br>
-                2017/08/16 · <a href="http://blog.jobbole.com/category/it-tech/" rel="category tag">IT技术</a>
-                            </p>
-			<span class="excerpt"><p>在计算机科学中，树是一种很重要的数据结构，比如我们最为熟悉的二叉查找树（Binary Search Tree），红黑树（Red-Black Tree）等，通过引入树这种数据结构，我们可以很快地缩小问题规模，实现高效的查找。</p>
-</span>
-			<p class="align-right"><span class="read-more"><a target="_blank" href="http://blog.jobbole.com/112206/">阅读全文 »</a></span></p>
-
-		</div>
-		<!-- END .post-meta -->
-
-		<div class="clear"></div>
-
-	    </div>
     </div>
+    {% for article in all_articles.object_list %}
+        <div class="grid-8">
+            <div class="post floated-thumb">
 
-    <div id="sidebar" class="grid-4">
-        <div class="tabs tabbed_widget">
-            <ul class="nav clearfix">
-                <li class="active"><a id="link-tab1" href="#tab1" title="本周热门文章">本周热门文章</a></li>
-                <li><a id="link-tab2" href="#tab2" title="本月热门文章">本月热门文章</a></li>
-                <li><a id="link-tab3" href="#tab3" title="热门标签">热门标签</a></li>
-            </ul>
-            <div id="tab1" class="tab" style="display: block;">
-                <div class="floated-thumb">
-                    <div class="post-meta  no-thumb">
-                        <p>
-                            <span class="numb">0</span>
-                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/112233/" title="Zookeeper，你可把我坑惨了！">Zookeeper，你可把我坑惨了！</a><br>
-                        </p>
-                        <br>
-                    </div>
-                    <div class="claer"></div>
-                    <div class="post-meta  no-thumb">
-                        <p>
-                            <span class="numb">0</span>
-                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/112233/" title="Zookeeper，你可把我坑惨了！">Zookeeper，你可把我坑惨了！</a><br>
-                        </p>
-                        <br>
-                    </div>
-                    <div class="claer"></div>
+
+                <!-- BEGIN .post-thumb -->
+                <div class="post-thumb">
+
+                    <a target="_blank" href="{{ article.url }}" title="{{ article.article_title }}"><img
+                            src="{{ MEDIA_URL }}/media/{{ article.article_image }}" alt="" width="120" height="120"></a>
+
                 </div>
+                <!-- END .post-thumb -->
+                <!-- BEGIN .post-meta -->
+                <div class="post-meta">
+                    <p>
+                        <a class="archive-title" target="_blank" href="{{ article.url }}"
+                           title="{{ article.article_title }}">{{ article.article_title }}</a><br>
+                        {{ article.pub_time }} · <a href="http://blog.jobbole.com/category/it-tech/"
+                                                    rel="category tag">{{ article.trade.trad_name }}</a>
+                    </p>
+                    <span class="excerpt"><p>{{ article.shortContent }}</p>
+</span>
+                    <p class="align-right"><span class="read-more"><a target="_blank"
+                                                                      href="{{ article.url }}">阅读全文 »</a></span></p>
+
+                </div>
+                <!-- END .post-meta -->
+
+                <div class="clear"></div>
 
             </div>
         </div>
-    </div>
+    {% endfor %}
+
 </div>
 
 
+<nav aria-label="..." style="text-align: center;">
+    <ul class="pagination">
+        {% if all_articles.has_previous %}
+            <li class="enabled"><a href="?{{ all_articles.previous_page_number.querystring }}"
+                                    aria-label="Previous">上一页</a></li>
+        {% endif %}
+
+        {% for page in all_articles.pages %}
+            {% if page %}
+                {% ifequal page all_articles.number %}
+                    <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                {% else %}
+                    <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                {% endifequal %}
+            {% else %}
+                <li class="none"><a href="">...</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if all_articles.has_next %}
+            <li class="enabled"><a href="?{{ all_articles.next_page_number.querystring }}" aria-label="Next">下一页</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+{#<div id="pagination">#}
+{#    <ul class="pagelist">#}
+{##}
+{#        {% for page in all_articles.pages %}#}
+{#            {% if page %}#}
+{#                {% ifequal page all_articles.number %}#}
+{#                    <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>#}
+{#                {% else %}#}
+{#                    <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>#}
+{#                {% endifequal %}#}
+{#            {% else %}#}
+{#                <li class="none"><a href="">...</a></li>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{##}
+{#    </ul>#}
+{#</div>#}
 
 
 </body>
