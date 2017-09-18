@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.article_title }}</title>
+</head>
+<body>
+
+<div id="info" style="height: auto;width: 90%; padding-left: 20px; padding-right: 20px;">
+    <p style="font-size: 20px; color: red;">{{ article.article_title }}</p>
+    <p style="font-size: 15px; color: lightblue;">发布日期{{ article.pub_time }}</p>
+
+</div>
+<div id = "content" style="height: 100%; width: 90%; padding-left: 20px; padding-right: 20px;">
+
+    {% autoescape off %}
+        {{ article.content}}
+    {% endautoescape %}
+
+</div>
+
+
+</body>
+</html>

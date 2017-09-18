@@ -11,6 +11,16 @@ from .signal import pizza_done
 PERPAGER_ARTICLE_COUNT = 5
 
 
+class ArticleMobileDetailView(View):
+    def get(self, request, article_id):
+        article_id = int(article_id)
+        article = Article.objects.get(pk=article_id)
+        article.read_num += 1
+        article.new_or_update = "update"
+        article.save()
+        return render(request, "article_mobile_detail.html", {"article": article})
+
+
 class ArticleListView(View):
     def get(self, request, type_id):
         #监听信号
@@ -53,7 +63,7 @@ class ArticleJsonView(View):
             dic["title"] = article.article_title
             dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/mobile_detail/" + str(article.pk) + "/"
             dic["shortContent"] = article.shortContent
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
@@ -66,7 +76,6 @@ class ArticleJsonView(View):
             json_data["more"] = ""
 
         return HttpResponse(json.dumps(json_data), content_type="application/json")
-
 
 
 class HomeNewsJsonListView(View):
@@ -91,7 +100,7 @@ class HomeNewsJsonListView(View):
             dic["title"] = article.article_title
             dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/mobile_detail/" + str(article.pk) + "/"
             dic["shortContent"] = article.shortContent
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
@@ -128,7 +137,7 @@ class AbroadNewsJsonListView(View):
             dic["title"] = article.article_title
             dic["image"] = "http://192.168.155.1:8000/media/" + str(article.article_image)
             dic["type"] = article.type.type_name
-            dic["url"] = "http://192.168.155.1:8000/article/detail/" + str(article.pk)
+            dic["url"] = "http://192.168.155.1:8000/article/mobile_detail/" + str(article.pk) + "/"
             dic["trade"] = article.trade.trad_name
             dic["pubTime"] = str(article.pub_time)
             dic["showCount"] = str(article.read_num)

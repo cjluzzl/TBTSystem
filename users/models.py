@@ -59,6 +59,19 @@ class UserProfile(AbstractUser):
         return self.username
 
 
+class PushInfo(models.Model):
+    user = models.ForeignKey(UserProfile, verbose_name=u"接收用户")
+    channelId = models.CharField(verbose_name=u"Channel Id",max_length=20)
+    tag = models.CharField(verbose_name=u"用户标签", max_length=30)
+
+    class Meta:
+        verbose_name = u"用户标签"
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return "{0}({1})".format(self.user, self.channelId)
+
+
 class EmailRevifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u"验证码")
     email = models.EmailField(max_length=50, verbose_name=u"邮箱")
@@ -97,4 +110,7 @@ class Message(models.Model):
     class Meta:
         verbose_name = u"消息"
         verbose_name_plural = verbose_name
+
+
+
 
