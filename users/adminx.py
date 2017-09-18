@@ -3,7 +3,7 @@ __author__ = "cjluzzl"
 __date__ = "2017/8/26 16:09 "
 import xadmin
 from xadmin import views
-from .models import Province, Country, Trade, Message
+from .models import Province, Country, Trade, Message, PushInfo
 
 
 #主题注册
@@ -42,9 +42,16 @@ class MessageAdmin(object):
     search_display = ['user_from', 'user_to', 'read_state', 'del_state', 'msg']
     list_filter = ['user_from', 'user_to', 'read_state', 'del_state', 'msg', 'send_time']
 
+
+class PushInfoAdmin(object):
+    list_display = ['user', 'channelId', 'tag']
+    search_display = ['user', 'channelId', 'tag']
+    list_filter = ['user', 'channelId', 'tag']
+
 xadmin.site.register(Country, CountryAdmin)
 xadmin.site.register(Province, ProvinceAdmin)
 xadmin.site.register(Trade, TradeAdmin)
 xadmin.site.register(Message, MessageAdmin)
+xadmin.site.register(PushInfo, PushInfoAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSetting)#主题注册
 xadmin.site.register(views.CommAdminView, GlobalSetting)#更改网站标题和公司名注册

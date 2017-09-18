@@ -17,11 +17,17 @@ def random_str(randomlength=8):
     return str1
 
 
-def send_tip_email(email, article_url):
-    email_title = "文章更新提示"
-    email_body = "您订阅的文章已经更新了，请点击链接查看文章详情:{0}".format(article_url)
-    send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
-    return send_status
+def send_tip_email(email, article_url,send_type):
+    if send_type == "new":
+        email_title = "文章更新提示"
+        email_body = "您订阅的文章已经更新了，请点击链接查看文章详情:{0}".format(article_url)
+        send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+        return send_status
+    else:
+        email_title = "文章内容更新提示"
+        email_body = "您订阅的文章已经更新了，请点击链接查看文章详情:{0}".format(article_url)
+        send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+        return send_status
 
 
 def send_register_email(email, send_type="register"):
