@@ -6,7 +6,10 @@ import django.dispatch
 from django.db.models import signals
 from django.dispatch import receiver
 from .models import Article
+from users.models import PushInfo
 from django.core.signals import request_started,request_finished
+from utils.send_mail import send_tip_email
+
 pizza_done = django.dispatch.Signal(providing_args=["toppings", "size"])
 
 
@@ -19,15 +22,31 @@ pizza_done.connect(callback,dispatch_uid="123456")
 
 
 @receiver(signals.post_save, sender=Article)
-def welcome_student(instance, created, **kwargs):
+def welcome_article(instance, created, **kwargs):
     if created:
+        print send_tip_email("410018832@qq.com","http://127.0.0.1:8000/article/mobile_detail/1")
         print "新增了文章post_save"
-        print instance
-        print kwargs
+        print "instance:", instance
+        article = Article.objects.get(article_title=instance)
+
+        #查询PushInfo表
+        wait_users = PushInfo.objects.filter(tag=article.trade.trad_name)
+        emails = []
+        for i in wait_users:
+            emails.append(i.user.email)
+
+        ##最优方法为使用异步队列发送邮件
+        for email in emails:
+            print send_tip_email(email, "http://127.0.0.1:8000/article/mobile_detail/1")
+
+        #给表里所有指定tag发邮件
+
+
+        print "kwargs:",kwargs
     else:
         print "修改了文章post_save"
-        print instance
-        print kwargs
+        print "instance:", instance
+        print "kwargs:", kwargs
 
 #
 # @receiver(request_started)

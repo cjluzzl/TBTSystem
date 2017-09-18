@@ -111,6 +111,3 @@ class Message(models.Model):
         verbose_name = u"消息"
         verbose_name_plural = verbose_name
 
-
-
-

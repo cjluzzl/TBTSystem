@@ -2,13 +2,13 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
-from .models import UserProfile, EmailRevifyRecord
+from .models import UserProfile, EmailRevifyRecord, PushInfo
 from django.db.models import Q #支持后面的并集查询
 from django.views.generic.base import View
 from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UserInfoForm
 from django.contrib.auth.hashers import make_password
 from utils.send_mail import send_register_email
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from dwebsocket import require_websocket, accept_websocket
 # Create your views here.
 title = "中国计量大学TBT系统"
@@ -39,6 +39,20 @@ def test(request, user_name):
             request.websocket.send("我收到消息了"+message)
     except:
         print "错误"
+
+
+class SetTags(View):
+    def post(self, request):
+        user_name = request.POST.get("username","")
+        user = UserProfile.objects.get(username=user_name)
+        tag = request.POST.get("tag","")
+        channelId = request.POST.get("channelId","")
+        push_info = PushInfo()
+        push_info.user = user
+        push_info.tag = tag
+        push_info.channelId = channelId
+        push_info.save()
+        return HttpResponse("添加成功")
 
 
 #调试完成

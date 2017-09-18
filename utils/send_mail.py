@@ -8,13 +8,20 @@ from TBTSystem.settings import EMAIL_FROM
 
 
 def random_str(randomlength=8):
-    str1 = '';
-    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxZz0123456789';
-    length = len(chars) - 1;
-    random = Random();
+    str1 = ''
+    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxZz0123456789'
+    length = len(chars) - 1
+    random = Random()
     for i in range(randomlength):
-        str1 += chars[random.randint(0, length)];
-    return str1;
+        str1 += chars[random.randint(0, length)]
+    return str1
+
+
+def send_tip_email(email, article_url):
+    email_title = "文章更新提示"
+    email_body = "您订阅的文章已经更新了，请点击链接查看文章详情:{0}".format(article_url)
+    send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+    return send_status
 
 
 def send_register_email(email, send_type="register"):
