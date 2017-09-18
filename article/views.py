@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.views.generic.base import View
 from .models import ArticleType, Article
+from users.models import Message
 from django.http import HttpResponse
 import json
 import random
@@ -13,8 +14,40 @@ from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 PERPAGER_ARTICLE_COUNT = 5
 
 
-def index(request):
+class GetMessageView(View):
+    def get(self, request, user_name, page_id):
+        json_data = {}
+        try:
+            int(page_id)
 
+        except:
+            json_data["retcode"] = "400"
+            json_data["meta"] = "非法页面参数"
+            return HttpResponse(json.dumps(json_data), content_type="application/json")
+        json_data["retcode"] = "200"
+        json_data["meta"] = "请求成功"
+        l = []
+        messages = Message.objects.filter(user_to__username=user_name)[::-1]
+        count = len(messages)
+        messages = messages[(int(page_id) - 1) * PERPAGER_ARTICLE_COUNT:int(page_id) * PERPAGER_ARTICLE_COUNT]
+
+        for message in messages:
+            dic = {}
+            dic["send_time"] = str(message.send_time)
+            dic["from_user"] = message.user_from.username
+            dic["msg"] = message.msg
+            l.append(dic)
+        json_data["data"] = l
+        if (int(page_id)) * PERPAGER_ARTICLE_COUNT < count:
+            json_data["more"] = "http://192.168.155.1:8000/users/" + user_name + "/" + str(
+                int(page_id) + 1) + "/"
+        else:
+            json_data["more"] = ""
+
+        return HttpResponse(json.dumps(json_data), content_type="application/json")
+
+
+def index(request):
     all_articles = Article.objects.all()
     try:
         page = request.GET.get('page', 1)
