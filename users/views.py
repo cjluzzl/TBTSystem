@@ -215,3 +215,18 @@ class MobileLoginView(View):
             return HttpResponse("success")
         else:
             return HttpResponse("fail")
+
+
+class MobileRegisterView(View):
+    def post(self, request):
+        user = UserProfile()
+        user.username = request.POST.get("username","")
+        user.password = make_password(request.POST.get("pwd",""))
+        user.email = request.POST.get("email","")
+        user.mobile = request.POST.get("phoneNumber","")
+        user.gender = request.POST.get("gender","")
+        try:
+            user.save()
+            return HttpResponse("success")
+        except:
+            return HttpResponse("fail")
