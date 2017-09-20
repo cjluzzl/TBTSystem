@@ -204,3 +204,14 @@ class ModifyPwdView(View):
         else:
             email = request.POST.get("email", "")
             return render(request, "password_reset.html", {"email": email, "modify_form": ""})
+
+
+class MobileLoginView(View):
+    def post(self, request):
+        username = request.POST.get("username", "")
+        password = request.POST.get("password", "")
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            return HttpResponse("success")
+        else:
+            return HttpResponse("fail")
